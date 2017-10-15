@@ -8,17 +8,19 @@ namespace CM_laba1
 {
     class Function_graphics
     {
-        public int a { get; set; }
-       public int b { get; set; }
+        public double a { get; set; }
+        public double b { get; set; }
         public double h { get; set; }
         public int n { get; set; }
         public int m { get; set; }
+        public bool flag { get; set; }
         public Function_graphics()
         {
-            a = -1;
-            b = 1;
+            flag = true;
+            a = -1.0;
+            b = 1.0;
             m = 10;
-            h = 1;
+            h = 0.001;
             n = -1;
 
         }
@@ -30,7 +32,7 @@ namespace CM_laba1
         }
         public void H()
         {
-            h= (b - a) / n; 
+            h= (b - a) / (double)n; 
         }
         public double Polin(double x, double h)
         {
