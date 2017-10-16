@@ -74,10 +74,13 @@ namespace CM_laba1
                     {
 
                         Graphic.Series[0].Points.AddXY(j, graf.func(j));
-                        Graphic.Series[1].Points.AddXY(j, graf.Polin(j, graf.h));
+                        Graphic.Series[1].Points.AddXY(j, graf.Polin(j));
 
                     }
                 }
+                //
+                //Vivod_text.Text=Convert.ToString( graf.func(-1));
+                //
             }
         }
     }

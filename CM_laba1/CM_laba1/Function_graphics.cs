@@ -34,7 +34,7 @@ namespace CM_laba1
         {
             h= (b - a) / (double)n; 
         }
-        public double Polin(double x, double h)
+        public double Polin(double x)
         {
             double sum = 0.0, pr1, pr2;
             for (double i = a; i <= b; i += h)
