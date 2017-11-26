@@ -8,3 +8,13 @@ E:\Поляков Максим Сергеевич\CM\Lab_Gaus\Lab_Gaus\obj\Debug
 E:\Поляков Максим Сергеевич\CM\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.csproj.CoreCompileInputs.cache
 E:\Поляков Максим Сергеевич\CM\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.exe
 E:\Поляков Максим Сергеевич\CM\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.pdb
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.csprojResolveAssemblyReference.cache
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.Gaus.resources
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.Properties.Resources.resources
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.csproj.GenerateResource.Cache
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.csproj.CoreCompileInputs.cache
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.exe
+E:\Labs\Lab_Gaus\Lab_Gaus\obj\Debug\Lab_Gaus.pdb
+E:\Labs\Lab_Gaus\Lab_Gaus\bin\Debug\Lab_Gaus.exe.config
+E:\Labs\Lab_Gaus\Lab_Gaus\bin\Debug\Lab_Gaus.exe
+E:\Labs\Lab_Gaus\Lab_Gaus\bin\Debug\Lab_Gaus.pdb

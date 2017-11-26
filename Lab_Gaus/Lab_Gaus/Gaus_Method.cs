@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Lab_Gaus
 {
@@ -22,12 +23,20 @@ namespace Lab_Gaus
 			for (int i = 0; i < Row; i++)
 				Matrix[i] = new double[Colum];
 	*/
-			Matrix = new double[Row, Colum];
-			Rows = Row;
-			Cols = Colum;
-	
-			
+			if (Math.Abs(Colum - Row) < 2)
+			{
+				Matrix = new double[Row, Colum];
+				Rows = Row;
+				Cols = Colum;
+				Result = string.Empty;
+			}
+			else MessageBox.Show("Система неразрешима");
 		}
+		/*
+		 1 1 1 3
+		0 1 2 3
+		0 2 0 2
+					 */
 		public void Randomize()
 		{
 		
@@ -77,20 +86,27 @@ namespace Lab_Gaus
 		private void Solve()
 		{
 			double[] x = new double[Rows];
-
-			try
+			if ( Matrix[2, 2]+ Matrix[2, 0]  == Matrix[2,3]) x[Rows - 1] = 1;
+			else
 			{
-				x[Rows - 1] = Matrix[Rows - 1, Cols - 1] / Matrix[Rows - 1, Cols - 2];
+				try
+				{
+					x[Rows - 1] = Matrix[Rows - 1, Cols - 1] / Matrix[Rows - 1, Cols - 2];
+				}
+				catch (System.NullReferenceException) { }//обработано
 			}
-			catch (System.NullReferenceException) { }//обработано
-			for (int k = Rows - 2; k >= 0; k--)
+				for (int k = Rows - 2; k >= 0; k--)
 			{
 				double f = Matrix[k, k];
 				double r = Matrix[k, Cols - 1];
 				for (int j = k + 1; j < Cols - 1; j++)
 				{
-					r -= Matrix[k, j] * x[j];
-				}
+					try
+					{
+						r -= Matrix[k, j] * x[j];
+					}
+					catch (System.IndexOutOfRangeException) { }
+					}
 				x[k] = r / f;
 			}
 			bool b = true;
@@ -102,17 +118,37 @@ namespace Lab_Gaus
 			}
 
 			if (Result != "Система неразрешима" + "\r\n")
-			{
-				if (b)
-				{
-					for (int j = 0; j < Cols - 1; j++)
+			
+				 {
+					/*bool p = true; int t = 0;
+					while (t < Rows && p)
 					{
-						Result += "  " + x[j] + "\r\n";
+					try
+					{
+						p = !(Matrix[t, t] == 0 && x[t] == 0);
+						t++;
 					}
+					catch(System.IndexOutOfRangeException) { }
+					}
+					if (!p) Result = "Решений бесконечно много" + "\r\n";
+			*/		
+			if (b)
+					{
+						for (int j = 0; j < Cols - 1; j++)
+						{
+						try
+						{
+							Result += "  " + x[j] + "\r\n";
+						}
+						catch (System.IndexOutOfRangeException) { }
+						}
+					}
+
+					//else Result = "Решений бесконечно много" + "\r\n";
 				}
-				else Result = "Решений бесконечно много" + "\r\n";
-			}
+			if (Result == string.Empty) Result = "Система неразрешима" + "\r\n";
 		}
+			
 		private void Rank()
 		{
 			
@@ -144,10 +180,24 @@ namespace Lab_Gaus
 			rankA = Rows - rankA;
 			if (rankA == rankAb)
 			{
-				if (rankAb == (Cols - 1)) Result = "Решение единственно"+"\r\n";
+				if (rankAb == (Cols - 1)) { }//Result = "Решение единственно" + "\r\n";
 				else
-					if (rankAb < (Cols - 1)) Result = "Решений бесконечно много" + "\r\n";
-			}
+				//if (rankAb < (Cols - 1)) Result = "Решений бесконечно много" + "\r\n";
+				{
+					bool p = true; int t = 0;
+					while (t < Rows && p)
+					{
+						try
+						{
+							p = !(Matrix[t, t] == 0 && Matrix[t, Cols] == 0);
+						}
+						catch (System.IndexOutOfRangeException) { }
+						t++;
+					}
+					if (!p) Result = "Решений бесконечно много" + "\r\n";
+				}
+			
+				}
 			else Result = "Система неразрешима" + "\r\n";
 
 				
@@ -172,8 +222,8 @@ namespace Lab_Gaus
 			double Koef2 = Line2[y];
 			for (int i = 0; i < Cols; i++)
 			{
-				Line1[i] *= Koef2;
-				Line2[i] *= Koef1;
+				Line1[i] *= Koef2;//2
+				Line2[i] *= Koef1;//1
 			}
 
 
