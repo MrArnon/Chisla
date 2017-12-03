@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
 			this.Graphic = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.Label_stepen = new System.Windows.Forms.Label();
 			this.Stepen_box = new System.Windows.Forms.TextBox();
@@ -45,47 +46,54 @@
 			this.Vivod_text = new System.Windows.Forms.TextBox();
 			this.Mnogo_but = new System.Windows.Forms.Button();
 			this.Table_but = new System.Windows.Forms.Button();
+			this.Spline_but = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.Graphic)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Graphic
 			// 
-			chartArea3.Name = "ChartArea1";
-			this.Graphic.ChartAreas.Add(chartArea3);
-			legend3.Name = "Legend1";
-			this.Graphic.Legends.Add(legend3);
+			chartArea1.Name = "ChartArea1";
+			this.Graphic.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.Graphic.Legends.Add(legend1);
 			this.Graphic.Location = new System.Drawing.Point(-1, 2);
 			this.Graphic.Name = "Graphic";
 			this.Graphic.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-			series9.ChartArea = "ChartArea1";
-			series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series9.Legend = "Legend1";
-			series9.LegendText = "Sqrt(3 + x^2) / Sqrt(5 + 7 * x^2)";
-			series9.Name = "Func_graf";
-			series10.ChartArea = "ChartArea1";
-			series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series10.Legend = "Legend1";
-			series10.LegendText = "Полином";
-			series10.Name = "Polinom_graf";
-			series11.ChartArea = "ChartArea1";
-			series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series11.Legend = "Legend1";
-			series11.LegendText = "Многочлен";
-			series11.Name = "Mnogo_graf";
-			series12.ChartArea = "ChartArea1";
-			series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series12.Legend = "Legend1";
-			series12.LegendText = "Таблица";
-			series12.Name = "Table_graf";
-			this.Graphic.Series.Add(series9);
-			this.Graphic.Series.Add(series10);
-			this.Graphic.Series.Add(series11);
-			this.Graphic.Series.Add(series12);
+			series1.ChartArea = "ChartArea1";
+			series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series1.Legend = "Legend1";
+			series1.LegendText = "Sqrt(3 + x^2) / Sqrt(5 + 7 * x^2)";
+			series1.Name = "Func_graf";
+			series2.ChartArea = "ChartArea1";
+			series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series2.Legend = "Legend1";
+			series2.LegendText = "Полином";
+			series2.Name = "Polinom_graf";
+			series3.ChartArea = "ChartArea1";
+			series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series3.Legend = "Legend1";
+			series3.LegendText = "Многочлен";
+			series3.Name = "Mnogo_graf";
+			series4.ChartArea = "ChartArea1";
+			series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series4.Legend = "Legend1";
+			series4.LegendText = "Таблица";
+			series4.Name = "Table_graf";
+			series5.ChartArea = "ChartArea1";
+			series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series5.Legend = "Legend1";
+			series5.LegendText = "Сплайн";
+			series5.Name = "Spline_graf";
+			this.Graphic.Series.Add(series1);
+			this.Graphic.Series.Add(series2);
+			this.Graphic.Series.Add(series3);
+			this.Graphic.Series.Add(series4);
+			this.Graphic.Series.Add(series5);
 			this.Graphic.Size = new System.Drawing.Size(850, 300);
 			this.Graphic.TabIndex = 0;
 			this.Graphic.Text = "График";
-			title3.Name = "Graphic_func";
-			this.Graphic.Titles.Add(title3);
+			title1.Name = "Graphic_func";
+			this.Graphic.Titles.Add(title1);
 			// 
 			// Label_stepen
 			// 
@@ -164,11 +172,22 @@
 			this.Table_but.UseVisualStyleBackColor = true;
 			this.Table_but.Click += new System.EventHandler(this.Table_but_Click);
 			// 
+			// Spline_but
+			// 
+			this.Spline_but.Location = new System.Drawing.Point(674, 394);
+			this.Spline_but.Name = "Spline_but";
+			this.Spline_but.Size = new System.Drawing.Size(92, 33);
+			this.Spline_but.TabIndex = 10;
+			this.Spline_but.Text = "Сплайн";
+			this.Spline_but.UseVisualStyleBackColor = true;
+			this.Spline_but.Click += new System.EventHandler(this.Spline_but_Click);
+			// 
 			// Form_for_graphic
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(844, 461);
+			this.Controls.Add(this.Spline_but);
 			this.Controls.Add(this.Table_but);
 			this.Controls.Add(this.Mnogo_but);
 			this.Controls.Add(this.Vivod_text);
@@ -201,6 +220,7 @@
         private System.Windows.Forms.TextBox Vivod_text;
 		private System.Windows.Forms.Button Mnogo_but;
 		private System.Windows.Forms.Button Table_but;
+		private System.Windows.Forms.Button Spline_but;
 	}
 }
 

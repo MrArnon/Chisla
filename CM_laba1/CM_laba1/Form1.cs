@@ -51,7 +51,7 @@ namespace CM_laba1
                 //Graphic.ChartAreas[0].AxisX.Minimum = -2;
                 //Graphic.ChartAreas[0].AxisX.Maximum = 3;
                 // Graphic.ChartAreas[0].AxisX.ScaleView.Zoom(-2, 3);
-                Graphic.ChartAreas[0].CursorX.IsUserEnabled = true;
+               /* Graphic.ChartAreas[0].CursorX.IsUserEnabled = true;
                 Graphic.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;// выбор интервалов для масштабирования
                 Graphic.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
                 Graphic.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
@@ -59,7 +59,7 @@ namespace CM_laba1
                 Graphic.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;// выбор интервалов для масштабирования
                 Graphic.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
                 Graphic.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
-
+				*/
 
                 Graphic.Series[0].Points.Clear();
                 Graphic.Series[1].Points.Clear();
@@ -110,21 +110,6 @@ namespace CM_laba1
 			if (graf.flag)
 			{
 				graf.H();
-
-				//масштабируем по Х
-				//Graphic.ChartAreas[0].AxisX.Minimum = -2;
-				//Graphic.ChartAreas[0].AxisX.Maximum = 3;
-				// Graphic.ChartAreas[0].AxisX.ScaleView.Zoom(-2, 3);
-				Graphic.ChartAreas[0].CursorX.IsUserEnabled = true;
-				Graphic.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;// выбор интервалов для масштабирования
-				Graphic.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-				Graphic.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
-				Graphic.ChartAreas[0].CursorY.IsUserEnabled = true;
-				Graphic.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;// выбор интервалов для масштабирования
-				Graphic.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
-				Graphic.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
-
-
 				Graphic.Series[0].Points.Clear();
 				Graphic.Series[2].Points.Clear();
 				for (double i = graf.a; i <= graf.b; i += graf.h)
@@ -147,6 +132,7 @@ namespace CM_laba1
 				//
 				//Vivod_text.Text=Convert.ToString( graf.func(-1));
 				//
+				//Vivod_text.Text = Convert.ToString(graf.polynomial(0.6));
 			}
 		}
 
@@ -180,21 +166,6 @@ namespace CM_laba1
 			if (graf.flag)
 			{
 				graf.H();
-
-				//масштабируем по Х
-				//Graphic.ChartAreas[0].AxisX.Minimum = -2;
-				//Graphic.ChartAreas[0].AxisX.Maximum = 3;
-				// Graphic.ChartAreas[0].AxisX.ScaleView.Zoom(-2, 3);
-				Graphic.ChartAreas[0].CursorX.IsUserEnabled = true;
-				Graphic.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;// выбор интервалов для масштабирования
-				Graphic.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-				Graphic.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
-				Graphic.ChartAreas[0].CursorY.IsUserEnabled = true;
-				Graphic.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;// выбор интервалов для масштабирования
-				Graphic.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
-				Graphic.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
-
-
 				Graphic.Series[0].Points.Clear();
 				Graphic.Series[3].Points.Clear();
 				for (double i = graf.a; i <= graf.b; i += graf.h)
@@ -214,8 +185,85 @@ namespace CM_laba1
 					Graphic.Series[3].Points.AddXY(g, graf.graf_table(g));
 				}
 				//insert your code
+				//Vivod_text.Text = Convert.ToString(graf.graf_table(0.8));
 			}
 			}
+
+		private void Spline_but_Click(object sender, EventArgs e)
+		{
+			Graphic.Series[0].Points.Clear();
+			Graphic.Series[4].Points.Clear();
+			Function_graphics graf = new Function_graphics();
+			CubicSpline cubicSpline = new CubicSpline();
+			try
+			{
+				graf.n = Convert.ToInt32(Stepen_box.Text);
+				graf.a = Convert.ToDouble(A_box.Text);
+				graf.b = Convert.ToDouble(B_box.Text);
+				if (graf.a >= graf.b)
+				{
+					MessageBox.Show("Неверный ввод");
+					A_box.Text = string.Empty;
+					B_box.Text = string.Empty;
+					Stepen_box.Text = string.Empty;
+					graf.flag = false;
+				}
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Неверный ввод");
+				A_box.Text = string.Empty;
+				B_box.Text = string.Empty;
+				Stepen_box.Text = string.Empty;
+				graf.flag = false;
+			}
+			if (graf.flag)
+			{
+				graf.H();
+				Graphic.Series[0].Points.Clear();
+				Graphic.Series[4].Points.Clear();
+				int n = 0;
+				for (double i = graf.a; i <= graf.b; i += graf.h)
+				{
+					for (double j = i; (j <= i + graf.h) && j < graf.b; j += (double)(graf.h / graf.m))
+					{
+
+						Graphic.Series[0].Points.AddXY(j, graf.func(j));
+						n++;
+
+					}
+				}
+				double[] x = new double[n];
+				double[] y = new double[n];
+				int k = 0;
+				for (double i = graf.a; i <= graf.b; i += graf.h)
+				{
+					for (double j = i; (j <= i + graf.h) && j < graf.b; j += (double)(graf.h / graf.m))
+					{
+
+						x[k] =j;
+						y[k] = graf.func(j);
+						k++;
+
+					}
+				}
+				cubicSpline.BuildSpline(x, y, n);
+				for (double i = graf.a; i <= graf.b; i += graf.h)
+				{
+					for (double j = i; (j <= i + graf.h) && j < graf.b; j += (double)(graf.h / graf.m))
+					{
+
+						Graphic.Series[4].Points.AddXY(j, cubicSpline.Func(j));
+					
+
+					}
+				}
+
+				//insert your code
+				//Vivod_text.Text = Convert.ToString(graf.graf_table(0.8));
+			}
+
+		}
 	}
 }
 
