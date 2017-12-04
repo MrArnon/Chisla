@@ -222,41 +222,34 @@ namespace CM_laba1
 				graf.H();
 				Graphic.Series[0].Points.Clear();
 				Graphic.Series[4].Points.Clear();
-				int n = 0;
+				//int n = 0;
 				for (double i = graf.a; i <= graf.b; i += graf.h)
 				{
 					for (double j = i; (j <= i + graf.h) && j < graf.b; j += (double)(graf.h / graf.m))
 					{
 
 						Graphic.Series[0].Points.AddXY(j, graf.func(j));
-						n++;
+					//	n++;
 
 					}
 				}
-				double[] x = new double[n];
-				double[] y = new double[n];
+				double[] x = new double[graf.n+1];
+				double[] y = new double[graf.n+1];
 				int k = 0;
-				for (double i = graf.a; i <= graf.b; i += graf.h)
+				for (double i = graf.a; i <= graf.b; i += (graf.b-graf.a)/graf.n)
 				{
-					for (double j = i; (j <= i + graf.h) && j < graf.b; j += (double)(graf.h / graf.m))
-					{
+				
 
-						x[k] =j;
-						y[k] = graf.func(j);
-						k++;
+						x[k] =i;
+						y[k] = graf.func(i);
+						k++;	
 
-					}
-				}
-				cubicSpline.BuildSpline(x, y, n);
-				for (double i = graf.a; i <= graf.b; i += graf.h)
-				{
-					for (double j = i; (j <= i + graf.h) && j < graf.b; j += (double)(graf.h / graf.m))
-					{
-
-						Graphic.Series[4].Points.AddXY(j, cubicSpline.Func(j));
 					
-
-					}
+				}
+				cubicSpline.BuildSpline(x, y, graf.n);
+				for (double i = graf.a; i <= graf.b; i += graf.h)
+				{
+					Graphic.Series[4].Points.AddXY(i, cubicSpline.Func(i));
 				}
 
 				//insert your code
